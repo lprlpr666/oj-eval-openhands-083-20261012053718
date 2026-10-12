@@ -88,13 +88,13 @@ public:
         Node* toDelete = prev->next;
         int value = toDelete->data;
         
-        // If only one node remains, update head to nullptr
-        if (size == 1) {
-            head = nullptr;
-        }
-        // If deleting the head node, update head pointer
-        else if (toDelete == head) {
-            head = head->next;
+        // Update head if necessary
+        if (toDelete == head) {
+            if (size == 1) {
+                head = nullptr;
+            } else {
+                head = head->next;
+            }
         }
         
         // Remove the node by updating the previous node's next pointer
