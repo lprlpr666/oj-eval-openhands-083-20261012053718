@@ -79,16 +79,6 @@ public:
     int removeAt(Node*& prev, int m) {
         if (head == nullptr || size == 0) return -1;
         
-        // Special case: if only one node remains
-        if (size == 1) {
-            int value = head->data;
-            // Don't actually delete it here, let the destructor handle it
-            // Just update pointers and size
-            head = nullptr;
-            size = 0;
-            return value;
-        }
-        
         // Move m-1 steps forward from the current position
         for (int i = 0; i < m - 1; i++) {
             prev = prev->next;
@@ -98,8 +88,12 @@ public:
         Node* toDelete = prev->next;
         int value = toDelete->data;
         
+        // If only one node remains, update head to nullptr
+        if (size == 1) {
+            head = nullptr;
+        }
         // If deleting the head node, update head pointer
-        if (toDelete == head) {
+        else if (toDelete == head) {
             head = head->next;
         }
         
