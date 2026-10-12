@@ -1,0 +1,9 @@
+CMakeFiles/
+CMakeCache.txt
+*.o
+*.out
+*.exe
+*.log
+*.swp
+*.swo
+.DS_Store
